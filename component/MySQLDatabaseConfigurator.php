@@ -21,9 +21,10 @@
 	class MySQLDatabaseConfigurator extends DatabaseConfigurator{
 		public function __construct($username="", $password="", $host="", $schema="", $port=""){
 			parent::__construct($username, $password, $host, $schema, $port);
+			$this->setDriverName("mysql");
 		}
 
 		public function buildConnectionString(){
-			return "mysql:host=".$this->getHost().";dbname=".$this->getSchema().";port=".$this->getPort().";charset=utf8";
+			return $this->getDriverName().":host=".$this->getHost().";dbname=".$this->getSchema().";port=".$this->getPort().";charset=utf8";
 		}
 	}

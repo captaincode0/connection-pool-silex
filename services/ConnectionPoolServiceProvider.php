@@ -18,12 +18,19 @@
 
 	use Silex\Application;
 	use Silex\ServiceProviderInterface;
+	use Captaincode\ConnectionPool\Components\DatabaseConfigurator;
 	use Captaincode\ConnectionPool\Services\ConnectionPoolService;
 
 	/**
 	 * ConnectionPoolServiceProvider
 	 * 		parameters:
-	 * 			-
+	 * 			-connection-pool.connections = [
+	 * 				[
+	 * 					"pool.configuration" => $configurator,
+	 * 					"pool.connections" => 20, //number of connections
+	 * 					"pool.name" => "main-pool" //the name of the pool
+	 * 				]
+	 * 			]
 	 */
 	class ConnectionPoolServiceProvider implements ServiceProviderInterface{
 		/**
@@ -33,7 +40,13 @@
 		 * @override
 		 */
 		public function register(Application $app){
+			$app["connection-pool.service"] = $app->share(function() use($app){
+				$connection_pool_service = new ConnectionPoolService();
 
+				$connection_pool_service->build($app["connection-pool.connections"]);
+
+				return $connection_pool_service;
+			});
 		}
 
 		/**

@@ -18,32 +18,38 @@
 
 	abstract class DatabaseConfigurator{
 		/**
+		 * [$driver_name database driver name]
+		 * @var string
+		 */
+		private $driver_name
+
+		/**
 		 * [$username database username]
-		 * @var [string]
+		 * @var string
 		 */
 		private $username;
 
 		/**
 		 * [$password database user password]
-		 * @var [string]
+		 * @var string
 		 */
 		private $password;
 
 		/**
 		 * [$host database host]
-		 * @var [string]
+		 * @var string
 		 */
 		private $host;
 
 		/**
 		 * [$schema database schema or collection]
-		 * @var [string]
+		 * @var string
 		 */
 		private $schema;
 
 		/**
 		 * [$port database server port]
-		 * @var [string]
+		 * @var string
 		 */
 		private $port;
 
@@ -61,43 +67,51 @@
 		 */
 		public abstract function buildConnectionString();
 
-		protected function getUserName(){
+		public function getDriverName(){
+			return $this->driver_name;
+		}
+
+		public function setDriverName($driver_name){
+			$this->driver_name = $driver_name;
+		}
+
+		public function getUserName(){
 			return $this->username;
 		}
 
-		protected function setUserName($username){
+		public function setUserName($username){
 			$this->username = $username;
 		}
 
-		protected function getPassword(){
+		public function getPassword(){
 			return $this->password;
 		}
 
-		protected function setPassword($password){
+		public function setPassword($password){
 			$this->password = $password;
 		}
 
-		protected function getHost(){
+		public function getHost(){
 			return $this->host;
 		}
 
-		protected function setHost($host){
+		public function setHost($host){
 			$this->host = $host;
 		}
 
-		protected function getSchema(){
+		public function getSchema(){
 			return $this->schema;
 		}
 
-		protected function setSchema($schema){
+		public function setSchema($schema){
 			$this->schema = $schema;
 		}
 
-		protected function getPort(){
+		public function getPort(){
 			return $this->port;
 		}
 
-		protected function setPort($port){
+		public function setPort($port){
 			$this->port = $port;
 		}
 	}

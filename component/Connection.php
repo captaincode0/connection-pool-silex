@@ -24,13 +24,13 @@
 		
 		/**
 		 * [$status the current status of connection]
-		 * @var [bool]
+		 * @var bool
 		 */
 		private $status;
 
 		/**
 		 * [$connection the current connection object]
-		 * @var [object]
+		 * @var object
 		 */
 		private $connection;
 
@@ -41,15 +41,31 @@
 		/**
 		 * [build makes the current connection with one configurator]
 		 * @param  DatabaseConfigurator $configurator [description]
-		 * @return [type]                             [description]
+		 * @return type                             [description]
 		 */
 		public abstract function build(DatabaseConfigurator $configurator);
 
-		protected function setConnection($connection){
+		public function setConnection($connection){
 			$this->connection = $connection;
 		}
 
-		protected function getConnection(){
+		public function getConnection(){
 			return $this->connection;
+		}
+
+		public function setLocked(){
+			$this->status = self::CONNECTION_LOCKED;
+		}
+
+		public function setUnlocked(){
+			$this->status = self::CONNECTION_UNLOCKED;
+		}
+
+		public function isLocked(){
+			return !$this->status;
+		}
+
+		public function isUnlocked(){
+			return $this->status;
 		}
 	}
