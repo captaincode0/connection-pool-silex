@@ -6,7 +6,7 @@
 
 	class MyApplication extends Application{
 		public function __construct($parameters=[]){
-			parent::__construct($parameters)
+			parent::__construct($parameters);
 		}
 	}
 

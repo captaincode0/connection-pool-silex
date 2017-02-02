@@ -32,7 +32,7 @@
 			 * 		//connections an array of objects of Connection Type
 			 * 	]]
 			 */
-			$this->connections = []
+			$this->connections = [];
 		}
 
 		/**
@@ -65,7 +65,7 @@
 								$current_connection = new MySQLConnection();
 								$current_connection->build($pool_configuration);
 							break;
-						default 
+						default:
 							break;
 					}
 
@@ -81,7 +81,7 @@
 		 * @return array                  [an array of collection objects]
 		 */
 		public function getConnections($collection_name){
-			return (array_key_exists($collection_name, $this->connections))?$this->connections[$collection_name]?null;
+			return (array_key_exists($collection_name, $this->connections))?$this->connections[$collection_name]:null;
 		}
 
 		/**

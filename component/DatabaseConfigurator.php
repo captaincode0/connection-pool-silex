@@ -21,7 +21,7 @@
 		 * [$driver_name database driver name]
 		 * @var string
 		 */
-		private $driver_name
+		private $driver_name;
 
 		/**
 		 * [$username database username]

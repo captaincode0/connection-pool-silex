@@ -19,8 +19,8 @@
 	use Captaincode\ConnectionPool\Components\DatabaseConfigurator;
 
 	abstract class Connection{
-		public static const CONNECTION_LOCKED = false;
-		public static const CONNECTION_UNLOCKED = true;
+		public static $CONNECTION_LOCKED = false;
+		public static $CONNECTION_UNLOCKED = true;
 		
 		/**
 		 * [$status the current status of connection]
@@ -35,7 +35,7 @@
 		private $connection;
 
 		public function __construct(){
-			$this->status = self::CONNECTION_UNLOCKED;
+			$this->status = self::$CONNECTION_UNLOCKED;
 		}
 
 		/**
@@ -54,11 +54,11 @@
 		}
 
 		public function setLocked(){
-			$this->status = self::CONNECTION_LOCKED;
+			$this->status = self::$CONNECTION_LOCKED;
 		}
 
 		public function setUnlocked(){
-			$this->status = self::CONNECTION_UNLOCKED;
+			$this->status = self::$CONNECTION_UNLOCKED;
 		}
 
 		public function isLocked(){
