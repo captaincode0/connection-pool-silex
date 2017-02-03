@@ -92,10 +92,11 @@ The second steep is to configure the `ConnectionPoolServiceProvider`, and pass y
 ```
 
 The parameters of the service parameters are the following:
-    1. connection-pool.connections: an array that contains all the connections to the database.
-    2. pool.configuration: the configuration object to build the connection to the database.
-    2. pool.connections: the number of connections to open.
-    3. pool.name: the name of pool.
+
+1. **connection-pool.connections**: an array that contains all the connections to the database.
+2. **pool.configuration**: the configuration object to build the connection to the database.
+2. **pool.connections**: the number of connections to open.
+3. **pool.name**: the name of pool.
 
 The implementation in one controller is the following, you need to call the servicer inside the controller, using a closure the pass by value the current application:
 
