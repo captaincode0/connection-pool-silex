@@ -10,7 +10,7 @@
 		}
 	}
 
-	$myapp = new MyApplication();
+	$app = new MyApplication();
 
 	$main_database_configuration = new MySQLDatabaseConfigurator(
 			"usercp2341",
