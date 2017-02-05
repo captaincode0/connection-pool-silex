@@ -15,10 +15,10 @@
 
 			$controllers->get("/user/all", function() use($app){
 				//get one unlocked connection
-				$connection = $app["connection-pool.service"]->getConnection("main-pool");
+				$connection_pool = $app["connection-pool.service"]->getConnection("main-pool");
 
 				//use the connection
-				$main_database_connection = $connection->getConnection();
+				$main_database_connection = $connection_pool->getConnection();
 
 				//do something with the connection
 				$statement = $main_database_connection->query("select users.id, users.email, users.name users.facebookapitoken from users left join articles as ar on articles.userid = users.id and articles.number>5");
@@ -29,7 +29,7 @@
 					$content[] = $row;
 
 				//set the connection to unlocked status
-				$connection->setUnlocked();
+				$connection_pool->setUnlocked();
 
 				return $app->json($content);
 			});
